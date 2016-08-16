@@ -55,10 +55,21 @@ export default {
         console.log('Covalence was toggled!');
         atom.workspace.observeTextEditors(function(editor) {
             pageData = editor.getText();
+            editor.onDidChange(function () {
+              console.log("hello there.");
+            })
+            editor.onDidChange(function () {
+              console.log("hello there.");
+            })
+            editor.hasMultipleCursors(function () {
+              console.log("Only one curser.");
+            })
+          console.log(editor.getCursorScreenPosition());
+
         });
 
         function sendData(pageData) {
-            console.log('batman');
+            console.log('krist was here.');
             firebase.database().ref("projects").set({
                 "pageData": pageData
             });
@@ -66,12 +77,12 @@ export default {
 
         sendData(pageData);
 
-        console.log(pageData);
-        return (
-            this.modalPanel.isVisible() ?
-            this.modalPanel.hide() :
-            this.modalPanel.show()
-        );
+        console.log("working");
+        // return (
+        //     this.modalPanel.isVisible() ?
+        //     this.modalPanel.hide() :
+        //     this.modalPanel.show()
+        // );
     }
 
 };
