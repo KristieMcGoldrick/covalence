@@ -69,6 +69,7 @@ export default {
         });
 
         function sendData(pageData) {
+          // firebase.database.INTERNAL.forceWebSockets();
             console.log('krist was here.');
             firebase.database().ref("projects").set({
                 "pageData": pageData
